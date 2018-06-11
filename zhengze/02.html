@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>常用正则</title>
+</head>
+<body>
+<script>
+    //  中括号中出现的所有字符都代表本身意思，没有特殊含义；(例如.本身在正则中代表除了\n以外的任意一个字符；但是写在中括号中就表示.的意思，没有别的意思)
+    //  +号在中括号中就是+号的意思，并不会表示0个或者多个的意思
+    //  ()分组的作用1,改变x|y的默认优先级
+    //  例如 正则 var reg = /^18\19$/,会有很多符合 18，19，189，119，119，819，1819....很多符合
+    //   但是用括号抱起来
+    //  var reg =  /^(18|19)$/,只会匹配18，19两种情况
+    var reg1 = /[.]/;
+    console.log(reg1.test('.'))  //true
+    console.log(reg1.test('1'))     //false
+    //有效数字的正则   正数 负数0小数  例如12 12.3 +-12   如有小数点后面必须有数字
+    var reg = /^[+-]?(\d|[0-9]\d+)(\.\d+)?$/
+    console.log(reg.test('123'));
+</script>
+</body>
+</html>
