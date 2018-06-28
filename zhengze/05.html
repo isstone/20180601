@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>replace</title>
+</head>
+<body>
+<script>
+        //replace的替换
+        //在字符串中，不使用正则的情况下replace是替换的意思,每执行一次，只能替换一个相应的字符串，每次执行replace,都从索引值0开始替换
+        var str= 'haohaoxuexi2018';
+        var str1 = str.replace('xuexi','dushu');
+        // console.log(str1);
+        //改成正则的方式
+        var str2 = 'haohaoxuexihaohaoxuexi2018';
+        var reg2 = /haohaoxuexi/;
+        // console.log(str2.replace(reg2,'haha'));
+
+
+        var str3 = 'zhufengpeixun2018zhufengpeixun2019'
+         // str3.replace(/zhufengpeixun/g,function(){
+              // console.log('ok'); // 输出两次，就说明函数执行了两次;
+             //匿名函数执行多少次，取决于正则能在字符串中捕获多少次
+             //每一次执行匿名函数，传递的的arguments和自己通过exec捕获到的结果非常相似的；
+             //return 返回的是啥就相当于把你捕获到的内容替换成啥；
+           //  例如// return 1 ;
+            // console.log(str3)// 输出zhufengpeixun1zhufengpeixun1
+        // });
+        str3 = str3.replace(/\d+/g,function(){
+            return 'haha'
+            // console.log(arguments)
+
+        });
+        console.log(str3)
+
+
+</script>
+</body>
+</html>

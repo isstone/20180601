@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>分组捕获</title>
+</head>
+<body>
+    <script>
+        //分组捕获
+        // 正则中，小括号代表分组，用处是：1改变默认优先级 2分组引用
+
+        // 分组引用
+        var reg = /^(\w)\1(\w)\2$/   //一个大正则中包含两个分组,\2代表和第二个分组出现一模一样的内容，
+        // \1 代表和第一个分组出现一模一样的内容;
+        //一模一样，不仅出现的内容一样，就连值也要一样
+        console.log(reg.test('zzff'))   // true;
+        var reg1 = /^(\w)\1(\w)\2(\d)\3/;
+        var reg2 = /^(\w)\1(\w)\2(\d)\3(?:[3-5])/;
+        console.log(reg1.test('aabb33'))  //true
+        console.log(reg1.test('aabb34'))   //false
+         console.log(reg1.exec('aabb33'))   //["aabb33", "a", "b", "3", index: 0, input: "aabb33", groups: undefined]
+        console.log(reg2.test('nnmm004'))   //true
+        console.log(reg2.exec('nnmm004'))   //["nnmm004", "n", "m", "0", index: 0, input: "nnmm004", groups: undefined]
+         //(?:[3-5])这个分组里加了?: 说明只做匹配，不需要捕获；如果不加?: 说明是既匹配又捕获的
+
+
+         //用exec捕获到的数组：
+         //下标0就是大正则捕获到的，整个的
+        //后面的每次捕获的依次是括号里捕获到的内容
+
+        //正则捕获的时候，不仅仅把大正则的内容捕获到，还把括号里的正则捕获到，叫分组捕获
+        var reg3 = /xuexi(\d+)/g;
+        var str1 = 'xuexi1234xuexi5678xuexi3344';
+        console.log(reg3.exec(str1));    // ["xuexi1234", "1234", index: 0, input: "xuexi1234xuexi5678xuexi3344", groups: undefined]
+        console.log(str1.match(reg3))   // ["xuexi1234", "xuexi5678", "xuexi3344"]
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>创建正则</title>
+</head>
+<body>
+<script>
+    //创建正则的两种方式
+    var reg = /d+/;
+    var reg1 = new RegExp('') //括号里填写正则的字符串；
+    var name = 'yezi'
+    var reg = /^d+"+ name+"d+$/   //这里name会被当成元字符去匹配，而不会当成变量变为'yezi';
+    //  反斜杠包起来的规则中所有的字面量都是元字符；有的具有特殊意义，而大部分是代表本身含义的；
+    //  要是想在反斜杠中使用变量，必须用实例创建的方式；---> var reg1 = new RegExp('')
+
+    //实例创建正则，里面可以使用变量
+    var reg2 = new RegExp('^\d+'+name+'\d+$','g');
+    console.log(reg2.test('2019yezi2019'))   //false ,因为在实例中字符创里面的斜杠不代表正则了，需要用斜杠再转义一下，变成双斜杠；
+    var reg3 = new RegExp('^\\d+'+name+'\\d+$','g');
+    console.log(reg3.test('2019yezi2019'))   //true,因为此时的正则中\\d代表元字符的意思了
+
+
+
+   // 需求验证年龄，介于18-65
+
+    //不活exec具有懒惰性，不加/g，就每次lastindex都是0 ，每次都从0开始查找。所以处理贪婪性就是加全局变量/g；
+    //要解决正则的懒惰性，就需需要遍历，遍历到lastindex == null时候，跳出循环，就可以取到exec捕获到的所有正则内容；
+    //正则贪婪性，每次都会捕获最长的字符-》解决办法，在量词元字符后面加一个问号即可，从最短的捕获开始。在这里？不再是0-1次，在量词元字符后面是取消正则的贪婪性；
+
+    //正则表达式
+    //捕获表达式
+
+</script>
+</body>
+</html>

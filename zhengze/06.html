@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>replace的实战</title>
+</head>
+<body>
+<script>
+    var str = '20151213';
+    var ary = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖']
+    str = str.replace(/\d/g,function(){
+        var num = arguments[0]; // /\d/捕获到的是每一个数字，arguments[0]可以获取每个的索引值0，来获取每次捕获的内容，2，0，1，5.
+        str = ary[num]; //str中捕获到的每一个内容刚好可以当做数组中对应大写字母的索引值，去查找相应的大写字母；
+        return str;  //想替换成啥，就return啥
+    });
+    console.log(str)  //输出'贰零壹伍壹贰壹叁'；
+</script>
+
+
+</body>
+</html>
